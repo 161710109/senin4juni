@@ -40,7 +40,7 @@
 				    	<td><p>{{ $data->jenis }}</p></td>
 				    	<td><p>{{ $data->warna }}</p></td>
               <td><p>{{ $data->perseneling }}</p></td>
-              <td><p>{{ $data->galeri->galeri_id}}
+              <td><p>{{ $data->id_galeri}}
 						<td>
 							<a class="btn btn-warning" href="{{ route('mobil.edit',$data->id) }}">Edit</a>
 						</td>

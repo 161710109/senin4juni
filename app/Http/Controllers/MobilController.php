@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\mobil;
 use App\galeri;
+use Session;
 use Illuminate\Http\Request;
 
 class MobilController extends Controller
@@ -28,7 +29,7 @@ class MobilController extends Controller
     {
         $mobil = mobil::all();
         $galeri = galeri::all();
-        return view('mobil.index',compact('mobil','galeri'));
+        return view('mobil.create',compact('mobil','galeri'));
     }
 
     /**
@@ -43,12 +44,12 @@ class MobilController extends Controller
         $this->validate($request,[
             'nama' => 'required|',
             'plat_nomor' => 'required|unique:mobil',
-            'kapasitas' => 'required|',
-            'harga' => 'required|',
-            'jenis' => 'required|',
-            'warna' => 'required|',
-            'tahun' => 'required|',
-            'perseneling' => 'required'
+            'kapasitas' => 'required',
+            'harga' => 'required',
+            'jenis' => 'required',
+            'warna' => 'required',
+            'perseneling' => 'required',
+            'id_galeri' => 'required'
         ]);
         $mobil= new mobil;
         $mobil->nama = $request->nama;
@@ -57,8 +58,8 @@ class MobilController extends Controller
         $mobil->harga = $request->harga;
         $mobil->jenis = $request->jenis;
         $mobil->warna = $request->warna;
-        $mobil->tahun = $request->tahun;
         $mobil->perseneling = $request->perseneling;
+        $mobil->id_galeri = $request->id_galeri;
         $mobil->save();
         session::flash("flash_notification",[
             "level" => "success",
@@ -102,14 +103,14 @@ class MobilController extends Controller
     public function update(Request $request, mobil $mobil)
     {
         $this->validate($request,[
-            'nama' => 'required|',
+            'nama' => 'required',
             'plat_nomor' => 'required|unique:mobil',
-            'kapasitas' => 'required|',
-            'harga' => 'required|',
-            'jenis' => 'required|',
-            'warna' => 'required|',
-            'tahun' => 'required|',
-            'perseneling' => 'required'
+            'kapasitas' => 'required',
+            'harga' => 'required',
+            'jenis' => 'required',
+            'warna' => 'required',
+            'perseneling' => 'required',
+            'id_galeri' => 'required'
         ]);
         $mobil= new mobil;
         $mobil->nama = $request->nama;
@@ -118,8 +119,8 @@ class MobilController extends Controller
         $mobil->harga = $request->harga;
         $mobil->jenis = $request->jenis;
         $mobil->warna = $request->warna;
-        $mobil->tahun = $request->tahun;
         $mobil->perseneling = $request->perseneling;
+        $mobil->id_galeri = $request->id_galeri;
         $mobil->save();
         return redirect()->route('mobil.index');
     }

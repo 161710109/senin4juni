@@ -85,16 +85,16 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('galeri_id') ? ' has-error' : '' }}">
+			  		<div class="form-group {{ $errors->has('id_galeri') ? ' has-error' : '' }}">
 			  			<label class="control-label">Galeri</label>	
-			  			<select name="galer_id" class="form-control">
+			  			<select name="id_galeri" class="form-control">
 			  				@foreach($galeri as $data)
-			  				<option value="{{ $data->id }}">{{ $data->galeri_id }}</option>
+			  				<option value="{{ $data->id }}">{{ $data->id_galeri }}</option>
 			  				@endforeach
 			  			</select>
-			  			@if ($errors->has('merk_id'))
+			  			@if ($errors->has('id_galeri'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('merk_id') }}</strong>
+                                <strong>{{ $errors->first('id_galeri') }}</strong>
                             </span>
                         @endif
 			  		</div>
