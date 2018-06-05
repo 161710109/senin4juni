@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-<section class="card">
-<div class="card-body text-secondary">col-lg-12</div>
-</section>
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
@@ -20,37 +17,37 @@
 
 			  		<div class="form-group">
 			  			<label class="control-label">Plat Nomor</label>
-						<input type="text" name="plat_nomor" class="form-control" value="{{ $mobil->perseneling }}"  readonly>
+						<input type="text" name="plat_nomor" class="form-control" value="{{ $mobil->plat_nomor }}"  readonly>
 			  		</div>
 
 			  		<div class="form-group">
 			  			<label class="control-label">Kapasitas</label>
-						<input type="text" name="kapasitas" class="form-control" value="{{ $mobil->plat_no }}"  readonly>
+						<input type="text" name="kapasitas" class="form-control" value="{{ $mobil->kapasitas }}"  readonly>
 			  		</div>
 
 			  		<div class="form-group">
 			  			<label class="control-label">Harga</label>
-						<input type="text" name="Harga" class="form-control" value="{{ $mobil->warna }}"  readonly>
+						<input type="text" name="Harga" class="form-control" value="{{ $mobil->harga }}"  readonly>
 			  		</div>
 
 			  		<div class="form-group">
 			  			<label class="control-label">Jenis</label>
-						<input type="text" name="jenis" class="form-control" value="{{ $mobil->tahun_keluaran }}"  readonly>
+						<input type="text" name="jenis" class="form-control" value="{{ $mobil->jenis }}"  readonly>
 			  		</div>
 
 			  		<div class="form-group">
 			  			<label class="control-label">Warna</label>
-						<input type="text" name="warna" class="form-control" value="{{ $mobil->harga }}"  readonly>
+						<input type="text" name="warna" class="form-control" value="{{ $mobil->warna }}"  readonly>
 			  		</div>
 
 			  		<div class="form-group">
 			  			<label class="control-label">Perseneling</label>
-						<input type="text" name="perseneling" class="form-control" value="{{ $mobil->stock }}"  readonly>
+						<input type="text" name="perseneling" class="form-control" value="{{ $mobil->perseneling }}"  readonly>
                       </div>
                       
 			  		<div class="form-group">
 			  			<label class="control-label">Galeri</label>
-						<input type="text" name="galeri_id" class="form-control" value="{{ $mobil->Merk->nama_merk }}"  readonly>
+						<input type="text" name="id_galeri" class="form-control" value="{{ $mobil->id_galeri }}"  readonly>
 			  		</div>
 			  		
 

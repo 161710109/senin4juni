@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\mobil;
 use App\galeri;
 use Session;
-use Illuminate\Http\Request;
 
 class MobilController extends Controller
 {
@@ -42,8 +42,8 @@ class MobilController extends Controller
     {
         
         $this->validate($request,[
-            'nama' => 'required|',
-            'plat_nomor' => 'required|unique:mobil',
+            'nama' => 'required',
+            'plat_nomor' => 'required|unique:mobils',
             'kapasitas' => 'required',
             'harga' => 'required',
             'jenis' => 'required',
@@ -73,7 +73,7 @@ class MobilController extends Controller
      * @param  \App\mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function show(mobil $mobil)
+    public function show($id)
     {
         $mobil = mobil::findOrFail($id);
         return view('mobil.show',compact('mobil'));
@@ -85,7 +85,7 @@ class MobilController extends Controller
      * @param  \App\mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function edit(mobil $mobil)
+    public function edit($id)
     {
         $mobil = mobil::findOrFail($id);
         $galeri = galeri::all();
@@ -100,11 +100,11 @@ class MobilController extends Controller
      * @param  \App\mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, mobil $mobil)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
             'nama' => 'required',
-            'plat_nomor' => 'required|unique:mobil',
+            'plat_nomor' => 'required|unique:mobils',
             'kapasitas' => 'required',
             'harga' => 'required',
             'jenis' => 'required',
@@ -112,16 +112,8 @@ class MobilController extends Controller
             'perseneling' => 'required',
             'id_galeri' => 'required'
         ]);
-        $mobil= new mobil;
-        $mobil->nama = $request->nama;
-        $mobil->plat_nomor = $request->plat_nomor;
-        $mobil->kapasitas = $request->kapasitas;
-        $mobil->harga = $request->harga;
-        $mobil->jenis = $request->jenis;
-        $mobil->warna = $request->warna;
-        $mobil->perseneling = $request->perseneling;
-        $mobil->id_galeri = $request->id_galeri;
-        $mobil->save();
+        $mobil = mobil::find($id);
+        $mobil->update($request->all());
         return redirect()->route('mobil.index');
     }
 
@@ -131,7 +123,7 @@ class MobilController extends Controller
      * @param  \App\mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(mobil $mobil)
+    public function destroy($id)
     {
         $mobil = mobil::findOrFail($id);
         $mobil->delete();

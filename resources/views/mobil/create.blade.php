@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-<section class="card">
-<div class="card-body text-secondary">col-lg-12</div>
-</section>
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
@@ -87,11 +84,7 @@
 
 			  		<div class="form-group {{ $errors->has('id_galeri') ? ' has-error' : '' }}">
 			  			<label class="control-label">Galeri</label>	
-			  			<select name="id_galeri" class="form-control">
-			  				@foreach($galeri as $data)
-			  				<option value="{{ $data->id }}">{{ $data->id_galeri }}</option>
-			  				@endforeach
-			  			</select>
+			  			<textarea name="id_galeri" class="form-control" required></textarea>
 			  			@if ($errors->has('id_galeri'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('id_galeri') }}</strong>

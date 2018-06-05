@@ -53,7 +53,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function show(galeri $galeri)
+    public function show($id)
     {
         $galeri = galeri::findOrFail($id);
         return view('galeri.show',compact('galeri'));
@@ -65,7 +65,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function edit(galeri $galeri)
+    public function edit($id)
     {
         $galeri = galeri::findOrFail($id);
         return view('galeri.edit',compact('galeri'));
@@ -78,16 +78,14 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, galeri $galeri)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
             'nama' => 'required|',
             'foto' => 'required'
         ]);
-        $galeri= new galeri;
-        $galeri->nama = $request->nama;
-        $galeri->foto = $request->foto;
-        $galeri->save();
+        $galeri = galeri::find($id);
+        $galeri->update($request->all());
         return redirect()->route('galeri.index');
     }
 
@@ -97,7 +95,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function destroy(galeri $galeri)
+    public function destroy( $id)
     {
         $galeri = galeri::findOrFail($id);
         $galeri->delete();
